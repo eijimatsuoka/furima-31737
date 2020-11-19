@@ -1,15 +1,22 @@
 class Item < ApplicationRecord
   belongs_to :user
   has_one_attached :image
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :prefecture
+  belongs_to :category
+  belongs_to :condition
+  belongs_to :postage
+  belongs_to :handling_time
 
   with_options presence: true do
     validates :name
     validates :description
-    validates :category_id
-    validates :condition_id
-    validates :postage_id
-    validates :prefecture_id
-    validates :handling_time_id
     validates :price
+  end
+    validates :category_id, numericality: { other_than: 1 }
+    validates :condition_id, numericality: { other_than: 1 }
+    validates :postage_id, numericality: { other_than: 1 }
+    validates :prefecture_id, numericality: { other_than: 1 }
+    validates :handling_time_id, numericality: { other_than: 1 }
 
-end
+
