@@ -1,3 +1,4 @@
+AllCops:
 # 除外するディレクトリ（自動生成されたファイル）
 # デフォルト設定にある"vendor/**/*"が無効化されないように記述
  Exclude:
@@ -11,7 +12,7 @@
 
 # 1行あたりの文字数をチェックする
 Layout/LineLength:
- Max: 130
+ Max: 150
 # 下記ファイルはチェックの対象から外す
  Exclude:
    - "Rakefile"
@@ -78,3 +79,6 @@ Style/FrozenStringLiteralComment:
 # メソッドパラメータ名の最小文字数を設定
 Naming/MethodParameterName:
  MinNameLength: 1
+
+ StringLiterals:
+  EnforcedStyle: double_quotes
