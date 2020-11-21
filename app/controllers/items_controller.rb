@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :move_to_index, except: [:index, :show]
+  before_action :authenticate_user!, only: [:new, :create,]
 
   def index
 
@@ -16,10 +16,6 @@ class ItemsController < ApplicationController
     else
       render :new
     end
-  end
-
-  def move_to_index
-    redirect_to action: :index unless user_signed_in?
   end
 
   private
