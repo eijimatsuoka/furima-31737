@@ -63,12 +63,12 @@ RSpec.describe Item, type: :model do
           expect(@item.errors.full_messages).to include("Price is not a number")
         end
         it 'priceが300以下だと保存できない' do
-          @item.price = '299'
+          @item.price = 299
           @item.valid?
           expect(@item.errors.full_messages).to include("Price must be greater than 299")
         end
         it 'priceが10000000以上だと保存できない' do
-          @item.price = '10000000'
+          @item.price = 10000000
           @item.valid?
           expect(@item.errors.full_messages).to include("Price must be less than 10000000")
         end
