@@ -4,23 +4,19 @@ RSpec.describe Item, type: :model do
     before do
       @item = FactoryBot.build(:item)
     end
-
     describe '商品出品' do
       context '商品出品がうまくいくとき' do
         it 'imageとuser、nameとdescriptionとcategory、conditionとpostage、prefectureとhandling_time、priceが存在すれば登録できる' do
           expect(@item).to be_valid
         end
-        it "nameが40文字以下で登録できる" do
-          @item.name = "aaaaaaa"
-          expect(@item).to be_valid
-        end
-        it "descriptionが1000文字以下であれば登録できる" do
-          @item.description = "aaaaaaa"
-          expect(@item).to be_valid
-        end
       end
       
       context '商品出品がうまくいかないとき' do
+        it 'imageが空だと保存できない' do
+          @item.image = nil
+          @item.valid?
+          expect(@item.errors.full_messages).to include("Image can't be blank")
+        end
         it 'nameが空だと保存できない' do
           @item.name = ''
           @item.valid?
@@ -64,15 +60,19 @@ RSpec.describe Item, type: :model do
         it 'priceが半角数字以外だと保存できない' do
           @item.price = '１１１１'
           @item.valid?
-          expect(@item.errors.full_messages).to include()
+          expect(@item.errors.full_messages).to include("Price is not a number")
         end
-        it 'priceが300~9999999の間以外だと保存できない' do
-          @item.price = '200'
+        it 'priceが300以下だと保存できない' do
+          @item.price = '299'
           @item.valid?
-          expect(@item.errors.full_messages).to include()
+          expect(@item.errors.full_messages).to include("Price must be greater than 299")
+        end
+        it 'priceが10000000以上だと保存できない' do
+          @item.price = '10000000'
+          @item.valid?
+          expect(@item.errors.full_messages).to include("Price must be less than 10000000")
         end
       end
     end
   end
 end
-
