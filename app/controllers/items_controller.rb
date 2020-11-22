@@ -12,7 +12,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      authenticate_user!
+      redirect_to root_path
     else
       render :new
     end
