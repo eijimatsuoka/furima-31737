@@ -1,5 +1,6 @@
 window.addEventListener('load', function(){
-
+  const path = location.pathname
+  if (path == "/items/new" || path == "/items"){
   const priceGet = document.getElementById("item-price");
 
   priceGet.addEventListener('input',function(){
@@ -13,4 +14,5 @@ window.addEventListener('load', function(){
   Tax.textContent = tax
   Prof.textContent = prof
 })
+  }
 })
