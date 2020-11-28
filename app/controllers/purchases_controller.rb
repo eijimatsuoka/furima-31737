@@ -3,15 +3,11 @@ class PurchasesController < ApplicationController
 
   def index
     unless user_signed_in?
-      redirect_to root_path
+      authenticate_user!
     else
-      if current_user.id == @item.user_id
+      if current_user.id == @item.user_id || @item.purchase.present?
         redirect_to root_path
       end
-    end
-
-    if @item.purchase.present?
-      redirect_to root_path
     end
     @purchase_address = PurchaseAddress.new
   end
