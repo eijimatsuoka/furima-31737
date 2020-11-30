@@ -1,3 +1,8 @@
+<% if flash[:notice] %>
+ <div class='flash'>
+  <p><%= flash[:notice] %></p>
+</div>
+<% end %>
 <%= render "shared/header" %>
 
 <div class="item-show">
