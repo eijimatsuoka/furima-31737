@@ -1,0 +1,15 @@
+ja:
+  activerecord:
+    attributes:
+    models:
+      user: ユーザ
+  devise:
+    registrations:
+      new:
+        sign_up: アカウント登録
+      signed_up: アカウント登録が完了しました
+    sessions:
+      new:
+        sign_in: ログイン
+      signed_in: ログインしました
+      signed_out: ログアウトしました

@@ -13,7 +13,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to root_path
+      redirect_to root_path, notice: "商品（#{@item.name}）を出品しました"
     else
       render :new
     end
@@ -23,14 +23,12 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    unless current_user.id == @item.user_id
-      redirect_to root_path
-    end
+    redirect_to root_path unless current_user.id == @item.user_id
   end
 
   def update
     if @item.update(item_params)
-      redirect_to item_path(@item.id)
+      redirect_to item_path(@item.id), notice: "商品（#{@item.name}）を編集しました"
     else
       render :edit
     end
@@ -38,8 +36,8 @@ class ItemsController < ApplicationController
 
   def destroy
     if current_user.id == @item.user_id
-      @item.destroy 
-      redirect_to root_path
+      @item.destroy
+      redirect_to root_path, notice: "商品（#{@item.name}）を削除しました"
     else
       redirect_to root_path
     end
