@@ -3,6 +3,8 @@
   <p><%= flash[:notice] %></p>
 </div>
 <% end %>
+<% breadcrumb :items_show, @item %>
+
 <%= render "shared/header" %>
 
 <div class="item-show">
