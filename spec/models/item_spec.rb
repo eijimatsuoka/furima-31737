@@ -15,32 +15,32 @@ RSpec.describe Item, type: :model do
         it 'imageが空だと保存できない' do
           @item.image = nil
           @item.valid?
-          expect(@item.errors.full_messages).to include("画像を入力してください")
+          expect(@item.errors.full_messages).to include('画像を入力してください')
         end
         it 'nameが空だと保存できない' do
           @item.name = ''
           @item.valid?
-          expect(@item.errors.full_messages).to include("商品名を入力してください")
+          expect(@item.errors.full_messages).to include('商品名を入力してください')
         end
         it 'descriptionが空だと保存できない' do
           @item.description = ''
           @item.valid?
-          expect(@item.errors.full_messages).to include("商品の説明を入力してください")
+          expect(@item.errors.full_messages).to include('商品の説明を入力してください')
         end
         it 'category_idが1だと保存できない' do
           @item.category_id = 1
           @item.valid?
-          expect(@item.errors.full_messages).to include("カテゴリーは1以外の値にしてください")
+          expect(@item.errors.full_messages).to include('カテゴリーは1以外の値にしてください')
         end
         it 'condition_idが1だと保存できない' do
           @item.condition_id = 1
           @item.valid?
-          expect(@item.errors.full_messages).to include("商品の状態は1以外の値にしてください")
+          expect(@item.errors.full_messages).to include('商品の状態は1以外の値にしてください')
         end
         it 'postage_idが1だと保存できない' do
           @item.postage_id = 1
           @item.valid?
-          expect(@item.errors.full_messages).to include("配送料の負担は1以外の値にしてください")
+          expect(@item.errors.full_messages).to include('配送料の負担は1以外の値にしてください')
         end
         it 'prefecture_idが1だと保存できない' do
           @item.prefecture_id = 1
@@ -55,7 +55,7 @@ RSpec.describe Item, type: :model do
         it 'priceが空だと保存できない' do
           @item.price = ''
           @item.valid?
-          expect(@item.errors.full_messages).to include("販売価格を入力してください")
+          expect(@item.errors.full_messages).to include('販売価格を入力してください')
         end
         it 'priceが半角数字以外だと保存できない' do
           @item.price = '１１１１'
